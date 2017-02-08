@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+	{% include head.html language=page.language %}
+	<body>
+		<div class="container-fluid">
+			{% include navbar.html language=page.language %}
+			{{ content }}
+			{% include footer.html language=page.language %}
+		</div>
+	</body>
+</html>

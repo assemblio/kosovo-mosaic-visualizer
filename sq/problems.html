@@ -1,0 +1,127 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Albanian Version -->
+    <title>Kosovo Mosaic</title>
+
+    <!-- jquery plugin -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- standard lists -->
+    <script src="../data/standard_lists/problems.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+
+    <!-- DataTables plugin -->
+    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+
+
+    <style type="text/css">
+        #container {
+            height: 500px; 
+            min-width: 310px; 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+        .loading {
+            margin-top: 10em;
+            text-align: center;
+            color: gray;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var data = getProblemsTranslation();
+        var language = "albanian";
+        function getData () {
+            $('#indicators-table').append("<tbody id='table-body'></tbody>");
+            for (var key in data) {
+                var name = data[key][language];
+                var description = data[key][language + "_desc"];
+                $('#table-body').append("<tr><td>"+ capitalizeFirstLetter(name) +"</td><td>"+ description +"</td></tr>");
+            }
+            $("#indicators-table").DataTable({
+                "paging": false
+            });
+        }
+
+        $(document).ready(function() {
+            getData();
+
+            $("#download-data").click(function(){
+                var url = "../data/zip_data/kosovo-mosaic-data.zip";
+                var downloadAttr = "data.zip";
+                $('#download-data').prop('href', url);
+                $('#download-data').prop('download', downloadAttr);
+            })
+        });
+        
+        function capitalizeFirstLetter(string) {
+            if (string != null) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            } else {
+                return "Empty"
+            }
+        }
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="">Kosovo Mosaic Visualizer</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="../index.html">Vizualizuesi</a></li>
+                    <li><a href="indicators.html">Treguesit</a></li>
+                    <li class="active"><a href="problems.html">Problemet</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="problems.html">Shqip</a></li>
+                    <li><a href="../sr/problems.html">Srpski</a></li>
+                    <li><a id="download-data" href="">Shkarko</a></li>
+                </ul>
+            </div> <!-- navbar-collapse -->
+        </div> <!-- container-fluid -->     
+    </nav>
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-2"></div>
+            <div class="col-md-8" style="text-align:center">
+                <h1>Problemet</h1>
+                <h5>Text to be provided in Albanian</h5>
+                <div id="table">
+                    <table id="indicators-table" class="display" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Problem</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<div class="row">
+    <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="">Kosovo Mosaic Visualizer</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                {% if page.language == "albanian" %}
+                    <li class="active"><a href="index.html">Visualizuesi</a></li>
+                {% else %}
+                    <li class="active"><a href="index.html">Visualizer</a></li>
+                {% endif %}
+                <!-- <li><a href="indicators.html">Indikatori</a></li>
+                <li><a href="problems.html">Problemi</a></li> -->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if page.language == "albanian" %}
+                    <li class="active"><a href="../sq/index.html">Shqip</a></li>
+                    <li><a href="../en/index.html">English</a></li>
+                    <li><a href="../sr/index.html">Srpski</a></li>
+                    <li><a id="download-data" href="">Shkarko</a></li>
+                {% elsif page.language == "serbian" %}
+                    <li><a href="../sq/index.html">Shqip</a></li>
+                    <li><a href="../en/index.html">English</a></li>
+                    <li class="active"><a href="../sr/index.html">Srpski</a></li>
+                    <li><a id="download-data" href="">Preuzimajte</a></li>
+                {% else %}
+                    <li><a href="../sq/index.html">Shqip</a></li>
+                    <li class="active"><a href="../en/index.html">English</a></li>
+                    <li><a href="../sr/index.html">Srpski</a></li>
+                    <li><a id="download-data" href="">Download</a></li>
+                {% endif %}
+            </ul>
+        </div> <!-- navbar-collapse -->
+    </nav>
+</div>
